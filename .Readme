@@ -1,3 +1,9 @@
 git remote add origin https://github.com/Samcool1990/ScalerFullstackPracticeSuman.git
 git branch -M main
 git push -u origin main
+
+
+or Clone https://github.com/Samcool1990/ScalerFullstackPracticeSuman.git
+put your file in the path
+git add .
+git Commit & Push
