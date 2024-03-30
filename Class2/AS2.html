@@ -1,51 +1,41 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assignment2</title>
+    <title>Survey Form</title>
 </head>
 <body>
-    <form action="">
-        <h1>Survey Form</h1>
-        
-        <div>
-            <label for="name">Name</label>
-            <input placeholder="Enter your Name" type="text" id="name">
-        </div>
+    <h1>Survey Form</h1>
+<form>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
 
-        <div>
-            <label for="age">Age</label>
-            <input placeholder="Enter your Age" type="number" id="age">
-        </div>
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" required>
 
-        <div>           
-            <span>Gender:</span>
-            <label for="">Male</label>
-            <input placeholder="Enter your Age" type="radio" name="gender" >
-            <label for="">Female</label>
-            <input placeholder="Enter your Age" type="radio" name="gender">
-        </div>
+    <label for="gender">Gender:</label>
+    <input type="radio" id="male" name="gender" value="male" required>
+    <label for="male">Male</label>
+    <input type="radio" id="female" name="gender" value="female">
+    <label for="female">Female</label>
 
-        <div>
-            <label for="">Favourite Food</label>
-            <select name="" id="food">
-                <option value="id1">Pizza</option>
-                <option value="id2">Chinese Food</option>
-                <option value="id3">Indian Food</option>
-            </select>
-        </div>
+    <label for="food">Favorite Food:</label>
+    <select id="food" name="food" required>
+        <option value="pizza">Pizza</option>
+        <option value="chinese">Chinese food</option>
+        <option value="indian">Indian food</option>
+        <option value="mexican">Mexican food</option>
+    </select>
 
-        <div>
-            <label for="">Do you like to cook ?</label>
-            <input type="checkbox"> Yes
-        </div>
-        <div>
-            <label for="">Additional Comments: </label>
-            <textarea name="" id="" cols="15" rows="2"></textarea>
-        </div>
-        <div>
-            <button>Submit</button>
-        </div>
-    </form>    
+    <label for="cook">Do you like to cook?</label>
+    <input type="checkbox" id="cook" name="cook">
+    <label for="cook">Yes</label>
+
+    <label for="comments">Additional comments:</label>
+    <textarea id="comments" name="comments"></textarea>
+
+    <input type="submit" value="Submit">
+</form>
 </body>
 </html>
