@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<!-- Please NOTE that the link to assets (like images) need to be set in global context.
+For example:
+To access an image from assets folder correct way to set src attribute is 
+
+src = 'profile.png'
+
+instead of 
+
+src = './assets/profile.png'
+-->
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            border: 1px solid #000;
+            
+        }
+        .box {
+            width: 50px;
+            height: 50px;
+            background-color: #ff5733;
+            border: 2px solid #000;
+            text-align: center;
+            line-height: 50px;
+            font-weight: bold;
+            color: #fff;
+
+        }
+        .absolute {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        .relative {
+            position: relative;
+            top: 100px;
+            left: 100px;
+        }
+        .fixed {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+        .static {
+            position: static;
+            bottom: 100px;
+            right: 100px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box absolute">Absolute</div>
+        <div class="box relative">Relative</div>
+        <div class="box fixed">Fixed</div>
+        <div class="box static">Static</div>
+
+    </div>
+</body>
+
+</html>
