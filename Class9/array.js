@@ -18,3 +18,11 @@ console.log(arr)
 
 arr.shift()
 console.log(arr)
+
+// To append
+arr.splice(1,1,'Fifty')  
+console.log(arr)
+
+// To Delete
+arr.splice(1,1)
+console.log(arr)
