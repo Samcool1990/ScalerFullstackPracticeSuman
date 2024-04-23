@@ -27,7 +27,7 @@ console.log(arr1, arr2);// [10,2,3] [10,2,3]
 
 // or 
 var arr1 = [1,2,3];
-var arr2 = [...arr1];
+var arr2 = [...arr1];//<<<<<<<<<<
 
 arr2[0] = 10;
 
