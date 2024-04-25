@@ -5,7 +5,7 @@ function sum(a,b) {
     return a + b;
 }
 
-console.log(sum(1,2));
+console.log('Example 1:' + sum(1,2));
 
 // Example 2:
 
@@ -15,7 +15,7 @@ function total(arr) {
 }
 
 z[0] = 10;
-console.log(total(z));
+console.log('Example 2:' + total(z));
 
 
 // Example 3:
@@ -26,8 +26,8 @@ function sum(a,b) {
    return a + b;
 }
 //pass by value
-console.log(sum(x,y)); //A
-console.log(x,y); //B
+console.log('Example 3:' + sum(x,y)); //A
+console.log('Example 3:' + x,y); //B
 
 
 // Example 4:
@@ -38,8 +38,8 @@ function total(arr) {
     return arr[0] + arr[1];
 }
 //pass by reference
-console.log(total(z));//A
-console.log(z); //B
+console.log('Example 4:' + total(z));//A
+console.log('Example 4:' + z); //B
 
 // Example 5:
 var x =1, y = 2;
@@ -50,12 +50,12 @@ function sum(a,b) {
 }
 
 //Pure function
-console.log(sum(x,y)); //12
-console.log(sum(x,y)); //12
-console.log(sum(x,y)); //12
-console.log(sum(x,y)); //12
-console.log(sum(x,y)); //12
-console.log(sum(x,y)); //12
+console.log('Example 5:' + sum(x,y)); //12
+console.log('Example 5:' + sum(x,y)); //12
+console.log('Example 5:' + sum(x,y)); //12
+console.log('Example 5:' + sum(x,y)); //12
+console.log('Example 5:' + sum(x,y)); //12
+console.log('Example 5:' + sum(x,y)); //12
 
 
 // Example 6:
@@ -68,12 +68,12 @@ function counter() {
 }
 
 //impure function
-console.log(counter());
-console.log(counter());
-console.log(counter());
-console.log(counter());
-console.log(counter());
-console.log(counter());
+console.log('Example 6:' + counter());
+console.log('Example 6:' + counter());
+console.log('Example 6:' + counter());
+console.log('Example 6:' + counter());
+console.log('Example 6:' + counter());
+console.log('Example 6:' + counter());
 
 
 // Example 7:
@@ -96,14 +96,14 @@ console.log('Example 7 :' + compute(subtract, 2, 5));
  
 // Example 8:
 
-function x( a ) {
+function func8(a) {
     return function(b) {
     return a + b;
     }
 }
 
 //Function can return another function
-console.log(x(1)(2));
+console.log('Example 8:' + func8(1)(2));
 
 
 
