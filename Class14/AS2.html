@@ -26,16 +26,14 @@
     <script id='solution' defer>
         async function nSeries(fileArray, ansArray) {
             //write your code here =========================================
-            if (fileArray.length === 0) {
-                ansArray.push("All files have been read");
-                return ansArray;
+            for (let fileName of fileArray) {
+                const content = await fetchByPromise(fileName);
+                ansArray.push(content);
             }
+            
+            ansArray.push("All files have been read");
 
-            const fileName = fileArray.shift();
-            const content = await fetchByPromise(fileName);
-            ansArray.push(content);
-
-            return nSeries(fileArray, ansArray);
+            return ansArray
         }
     </script>
 </body>

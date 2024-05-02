@@ -147,17 +147,42 @@ const myFetch =  function(delay, limit) {
 
 
 
+// function fetchByPromise(fileName) {
+//     return new Promise(function (resolve, reject) {
+//         setTimeout(function () {
+//             resolve(`content : ${fileName}`);
+//         }, 100 * Math.random());
+//     });
+// }
+
+// async function nSeries(fileArray, ansArray) {
+//     //write your code here =========================================
+//     for (let fileName of fileArray) {
+//         const content = await fetchByPromise(fileName);
+//         ansArray.push(content);
+//     }
+    
+//     ansArray.push("All files have been read");
+
+//     return ansArray }
+
+//     console.log(nSeries(["FILE 1", "FILE 2"],[]));
 
 
+function divide(a, b) {
+    //write your code here ===============================================
+    try {
+        const result1 = divide(10, 2);
+        console.log("Result:", result1); // Should print "Result: 5"
+
+        const result2 = divide(8, 0); // Division by zero
+    } catch (error) {
+        console.error(error.message); // Prints: Division by zero is not allowed.
+    }
+}
 
 
-
-
-
-
-
-
-
+console.log(divide(-1,0))
 
 
 
