@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Event Delegation</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .container {
+      border: 1px solid;
+      height: 10rem;
+      width: 10rem;
+    }
+
+    .container>div:hover{
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="red">red</div>
+    <div class="blue">blue</div>
+    <div class="green">green</div>
+  </div>
+  <script>
+    // Get the container element
+    var container = document.querySelector('.container');
+
+    // Add event listener to the container
+    container.addEventListener('click', function(event) {
+      var colorName = event.target.textContent.toLowerCase(); // Get the clicked color name
+
+      // Set the background color of the container based on the color name
+      switch(colorName) {
+        case 'red':
+          container.style.backgroundColor = 'red';
+          break;
+        case 'blue':
+          container.style.backgroundColor = 'blue';
+          break;
+        case 'green':
+          container.style.backgroundColor = 'green';
+          break;
+      }
+    });
+  </script>
+</body>
+
+</html>
