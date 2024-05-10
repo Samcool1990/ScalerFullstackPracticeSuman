@@ -115,6 +115,7 @@
 
         categoryRef.addEventListener('change', function(e) {
             filterCard(e.target.value);
+            // console.log(e.target.value);
         });
 
 
@@ -130,8 +131,8 @@
                 } else {
                     movieRef.style.display = 'none';
                 }
-            })
-        }
+            });
+        };
 
 
 
