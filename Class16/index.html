@@ -59,13 +59,13 @@
 
         cardsRef.forEach((cardRef) => {
             cardRef.addEventListener('click', function(e) {
-                /* console.log(e.target.getAttribute('data-color'));
-                console.log(e.target.dataset.color); */
+                // console.log(e.target.getAttribute('data-color'));  
+                console.log(e.target.dataset.color);
                 const colorClass = e.target.dataset.color;
                 e.target.classList.add(colorClass);
 
             });
-        })
+        });
     </script>
   </body>
 </html>
