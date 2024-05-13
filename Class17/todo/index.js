@@ -1,7 +1,7 @@
 function fetchTodo() {
     fetch('https://dummyjson.com/todos')
         .then(res => res.json())
-        .then(data => renderTodo(data));
+        .then(data => renderTodo(data))
 }
 
 function renderTodo(data) {
@@ -10,7 +10,7 @@ function renderTodo(data) {
     const todoListRef = document.getElementById('todoList');
     data.todos.forEach(todoObj => {
         createTodo(todoListRef, todoObj.todo, todoObj.completed);
-    });
+    })
     
 }
 
@@ -19,26 +19,21 @@ function renderSummary(count) {
     completedCountRef.innerText = count;
 }
 
-
 function createTodo(todoListRef, text, completed) {
     const newLiRef = document.createElement('li');
     newLiRef.innerText = text;
-    newLiRef.style.textDecoration = completed? 'line-through' : 'none';
-
-    todoListRef.append(newLiRef);
+    newLiRef.style.textDecoration = completed ? 'line-through' : 'none';
+    todoListRef.appendChild(newLiRef);
     const checkBoxRef = document.createElement('input');
     checkBoxRef.type = 'checkbox';
-    checkBoxRef.checked = completed ;
+    checkBoxRef.checked = completed;
     newLiRef.prepend(checkBoxRef);
 
     const buttonRef = document.createElement('button');
     buttonRef.innerText = 'Remove';
     buttonRef.style.fontSize = '8px';
-    buttonRef.style.margin = '10px';
+    buttonRef.style.marginLeft = '10px';
     newLiRef.appendChild(buttonRef);
 }
 
-
 fetchTodo();
-
-
