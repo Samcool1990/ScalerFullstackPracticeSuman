@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="doubleHolder">
+        <button class="double">double</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const doubleButtons = document.querySelectorAll('.double');
+
+            function addDoubleButtons() {
+                const parentDiv = this.parentElement;
+                parentDiv.removeChild(this);
+
+                for (let i = 0; i < 2; i++) {
+                    const newButton = document.createElement('button');
+                    newButton.className = 'double';
+                    newButton.textContent = 'double';
+                    newButton.addEventListener('click', addDoubleButtons);
+                    parentDiv.appendChild(newButton);
+             
+        }
+            }
+            doubleButtons.forEach(button => {
+                button.addEventListener('click', addDoubleButtons);
+            });
+        });
+    </script>
+</body>
+
+</html>

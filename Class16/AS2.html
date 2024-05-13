@@ -1,15 +1,5 @@
 <!DOCTYPE html>
 <html>
-<!-- Please NOTE that the link to assets (like images) need to be set in global context.
-For example:
-To access an image from assets folder correct way to set src attribute is 
-
-src = 'profile.png'
-
-instead of 
-
-src = './assets/profile.png'
--->
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -32,6 +22,22 @@ src = './assets/profile.png'
 
 </body>
 <script>
-    // Write your JS program here
+    const cell = document.querySelector('.cell');
+
+    // Function to draw the jail
+    function drawJail() {
+        cell.style.backgroundImage = 'url(https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/055/850/original/jail.jpg?1699030242)';
+    }
+
+    // Function to remove the jail
+    function removeJail() {
+        cell.style.backgroundImage = 'none';
+    }
+
+    // Event listener for mouse entering the cell
+    cell.addEventListener('mouseenter', drawJail);
+
+    // Event listener for mouse leaving the cell
+    cell.addEventListener('mouseleave', removeJail);
 </script>
 </html>

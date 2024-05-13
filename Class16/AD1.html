@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      div {
+        height: 100vh;
+        width: 100vw;
+        background: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <script>
+        // Write your solution here ================================
+        const div = document.querySelector('div');
+    
+        function setBackground() {
+            const windowWidth = window.innerWidth;
+            if (windowWidth > 1024) {
+                div.style.background = 'red';
+            } else if (windowWidth > 600 && windowWidth <= 1024) {
+                div.style.background = 'blue';
+            } else {
+                div.style.background = 'green';
+            }
+        }
+    
+        window.addEventListener('resize', setBackground);
+    
+        // Initial call to set background color based on window width
+        setBackground();
+    </script>
+  </body>
+</html>
