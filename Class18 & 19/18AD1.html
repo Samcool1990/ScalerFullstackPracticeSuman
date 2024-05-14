@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket</title>
+    <link rel="stylesheet" href="boilerplate.css">
+    <style>
+        /* Write CSS here */
+        /* Styling for the toolbox container */
+        .toolbox-cont {
+            background-color: #4b4b4b; /* Background color */
+            display: flex;             /* Flexbox layout */
+            align-items: center;       /* Center items along the cross axis */
+        }
+
+        /* Styling for the toolbox priority container */
+        .toolbox-priority-cont {
+            background-color: #3d3d3d; /* Background color */
+            display: flex;             /* Flexbox layout */
+            align-items: center;       /* Center items along the cross axis */
+            justify-content: space-evenly; /* Distribute space evenly between items */
+        }
+
+        /* Styling for the action button container */
+        .action-btn-cont {
+            background-color: #3d3d3d; /* Background color */
+            display: flex;             /* Flexbox layout */
+        }
+
+        /* Styling for the direct children of action button container */
+        .action-btn-cont > * {
+            display: flex;             /* Flexbox layout */
+            align-items: center;       /* Center items along the cross axis */
+            justify-content: center;   /* Center items along the main axis */
+            color: white;              /* Text color */
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="toolbox-cont">
+        <div class="toolbox-priority-cont">
+            <div class="lightpink color"></div>
+            <div class="lightgreen color"></div>
+            <div class="lightblue color"></div>
+            <div class="black color"></div>
+        </div>
+
+        <div class="action-btn-cont">
+            <div class="add-btn">
+                <img src="plus-logo.png" alt="color-logo" height="50%">
+            </div>
+            <div class="remove-btn">
+                <img src="cross-logo.png" alt="color-logo" height="50%">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
