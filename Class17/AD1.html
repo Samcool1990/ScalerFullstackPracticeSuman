@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1>DATABASE</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>S. No.</th>
+        <th>Name</th>
+        <th>Marks</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Sameer</td>
+        <td>90</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Rohan</td>
+        <td>100</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <form id="entryForm">
+    <label for="name">Name:
+      <input type="text" id="name" required />
+    </label>
+    <label for="marks">Marks:
+      <input type="number" id="marks" required />
+    </label>
+    <input type="submit" value="Submit" />
+  </form>
+  <script>
+    document.getElementById('entryForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      let name = document.getElementById('name').value;
+      let marks = document.getElementById('marks').value;
+      let tbody = document.querySelector('table tbody');
+      let newRow = document.createElement('tr');
+
+      let sno = tbody.getElementsByTagName('tr').length + 1;
+      newRow.innerHTML = `<td>${sno}</td><td>${name}</td><td>${marks}</td>`;
+
+      tbody.appendChild(newRow);
+
+      // Clear the form inputs
+      document.getElementById('name').value = '';
+      document.getElementById('marks').value = '';
+    });
+  </script>
+</body>
+
+</html>

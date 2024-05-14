@@ -44,19 +44,17 @@ src = './assets/profile.png'
     </div>
 
     <script>
-        //Q The following code is broken. Even when clicked on yellow,
-        //its alerted that red is clicked. Fix it
-
         let red = document.querySelector(".red");
+        let yellow = document.querySelector(".yellow");
 
         red.addEventListener('click', (e) => {
             window.alert('red is clicked');
-        })
+        });
 
         yellow.addEventListener('click', (e) => {
             window.alert('yellow is clicked');
-        })
-
+            e.stopPropagation(); // Prevents the event from bubbling up to the red box
+        });
     </script>
 </body>
 
