@@ -38,6 +38,10 @@
             cursor: pointer;
         }
 
+        .filter .box.selected {
+            border: 2px solid red;
+        }
+
         .filter .box:hover {
             border: 2px solid white;
         }
@@ -85,6 +89,10 @@
 
          .non-editable .task .task-remove {
             display: none;
+         }
+
+         .non-editable .task {
+            pointer-events: none;
          }
 
          .search input {
@@ -222,17 +230,17 @@
 <body>
     <header>
         <div class="filter">
-            <div class="p1 box"></div>
-            <div class="p2 box"></div>
-            <div class="p3 box"></div>
-            <div class="p4 box"></div>
+            <div class="p1 box" data-priority="p1"></div>
+            <div class="p2 box" data-priority="p2"></div>
+            <div class="p3 box" data-priority="p3"></div>
+            <div class="p4 box" data-priority="p4"></div>
         </div>
         <div class="actions">
             <div class="add box">+</div>
             <div class="remove box">x</div>
         </div>
         <div class="search">
-            <input type="text" placeholder="Search by Id" />
+            <input type="text" placeholder="Search by Id or Task Name" />
         </div>
     </header>
     <h1 class="heading">Kanband Board</h1>
@@ -248,6 +256,6 @@
             <div class="p4 box" data-priority="p4"></div>
         </div>
     </div>
-    <script src="./index.js"></script>
+    <script src="./index2.js"></script>
 </body>
 </html>
