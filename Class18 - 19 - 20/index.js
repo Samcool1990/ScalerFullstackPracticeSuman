@@ -5,6 +5,9 @@ const newTaskTextAreaRef = document.querySelector('.add-task-modal .left-section
 const prioritySelections = document.querySelectorAll('.add-task-modal .right-section .box');
 const disabledEditButtonRef = document.querySelector('.actions .remove.box');
 const taskWrapperRef = document.querySelector('.task-section');
+const filterBoxesRef = document.querySelectorAll('.filter .box')
+const inputRef = document.querySelectorAll('')
+
 
 function createTask(title, priority, newTaskId) { 
     const newTaskContent = `
@@ -76,7 +79,7 @@ prioritySelections.forEach((priorityBoxRef) => {
     })
 })
 
-function removeSelectedState() {
+function removeSelectedState(boxesRef) {
     prioritySelections.forEach((priorityBoxRef) => {
         priorityBoxRef.classList.remove('selected');
     });
@@ -104,3 +107,52 @@ function removeContentEditable() {
         ref.removeAttribute('contenteditable');
     })
 }
+
+function showFilterTask( ) {
+
+};
+
+filterBoxesRef.forEach(boxRef => {
+    boxRef.addEventListener('click', function(e){
+        removeSelectedState(filterBoxesRef)
+        e.target.classList.add('selected')
+        showFilterTask()
+    })
+});
+
+
+function showSearchedTask (searchText) {
+    const taskRef = document.querySelectorAll('.task ');
+    
+    taskRef.forEach(ref => {
+        const taskId = ref.closest('.task-id')
+        const taskName = ref.closest('.task-title span')
+        if (ref.innerText.includes(searchText)) {
+            task.style.display = 'flex'
+        }else {
+            task.style.display = 'none'
+        }
+    })
+}
+
+inputRef.addEventListener('keyup', function(e) {
+    console.log(e.target.value);
+    const searchText = e.target.value;
+    showSearchedTask(searchText);
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
