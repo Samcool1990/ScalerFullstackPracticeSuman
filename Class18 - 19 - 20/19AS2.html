@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Please NOTE that the link to assets (like images) need to be set in global context.
+For example:
+To access an image from assets folder correct way to set src attribute is 
+
+src = 'profile.png'
+
+instead of 
+
+src = './assets/profile.png'
+-->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ticket Management App</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        * {
+        box-sizing: border-box;
+        }
+
+        body {
+        margin: 0;
+        padding: 0;
+        }
+
+        .toolbox-cont {
+        height: 5rem;
+        background-color: #4b4b4b;
+        display: flex;
+        align-items: center;
+        }
+
+        .toolbox-cont>* {
+        margin-left: 4rem;
+        }
+
+        .toolbox-priority-cont {
+        height: 3.5rem;
+        width: 18rem;
+        background-color: #3d3d3d;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        }
+
+
+        .action-btn-cont {
+        height: 3.5rem;
+        width: 8rem;
+        background-color: #3d3d3d;
+        display: flex
+        }
+
+        .action-btn-cont>* {
+        display: flex;
+        justify-content: center;
+        width: 50%;
+        font-size: 2rem;
+        align-items: center;
+        color: white;
+
+        }
+
+        .color {
+        height: 1.5rem;
+        width: 3rem;
+        }
+
+        .lightpink {
+        background-color: lightpink;
+        }
+
+        .lightgreen {
+        background-color: lightgreen;
+        }
+
+        .lightblue {
+        background-color: lightblue;
+        }
+
+        .black {
+        background-color: black;
+        }
+
+
+        .modal-cont {
+        height: 50vh;
+        width: 45vw;
+        background: lightblue;
+        position: absolute;
+        top: 30%;
+        left: 25%;
+        display: none;
+
+        }
+
+
+        .textArea-cont {
+        height: 100%;
+        width: 75%;
+        background-color: #dfe4ea;
+        outline: none;
+        border: none;
+        resize: none;
+        font-size: 2rem;
+        padding: 2rem;
+        }
+
+
+        .priority-colors-container {
+        height: 100%;
+        width: 25%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        background-color: #4b4b4b
+        }
+
+        .priority-color {
+        height: 3rem;
+        width: 5rem;
+        }
+
+
+        .main-cont {
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+        padding: 2rem;
+        flex-wrap: wrap;
+        }
+
+
+        .ticket-cont {
+        height: 12rem;
+        width: 15rem;
+        background-color: coral;
+        }
+
+
+        .ticket-color {
+        height: 1rem;
+        }
+
+
+        .ticket-id {
+        background-color: yellow;
+        height: 2rem;
+        }
+
+        .ticket-lock,
+        .ticket-unlock {
+        display: flex;
+        font-size: 1.5rem;
+        justify-content: flex-end;
+        margin-top: 90px;
+        margin-right: 5px;
+        }
+
+        .ticket-cont button {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: transparent;
+        color: white;
+        font-size: large;
+        border: 2px double #dfe4ea;
+        }
+
+        .ticket-cont button:hover {
+        cursor: pointer;
+        }
+
+        .add-btn:hover {
+        background-color: #4BB543;
+        }
+
+
+        .remove-btn:hover {
+        background-color: #4BB543;
+        }
+
+
+        .toolbox-priority-cont>*:hover {
+        background-color: #485460;
+        }
+
+
+        .active {
+        border: 5px solid coral;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- TOOL BOX ELEMENTS -->
+    <div class="toolbox-cont">
+        <div class="toolbox-priority-cont">
+            <div class="lightpink color"></div>
+            <div class="lightgreen color"></div>
+            <div class="lightblue color"></div>
+            <div class="black color"></div>
+        </div>
+
+
+    </div>
+
+    <!-- MAIN CONTAINER - Tickets holder -->
+    <div class="main-cont">
+        <!-- <div class="ticket-color ${ticketColor}"></div>
+       <div class="ticket-id">${id}</div>
+       <div class="task-area">${ticketTask}</div>
+       <div class="ticket-lock">
+       <button>Locked</button>
+      </div> -->
+    </div>
+    </div>
+
+    <!-- MODAL - Ticket generator window -->
+    <div class="modal-cont">
+
+        <textarea class="textArea-cont" placeholder="Enter Your Task" spellcheck="false">
+
+       </textarea>
+
+
+        <div class="priority-colors-container">
+            <div class="lightpink priority-color"></div>
+            <div class="lightgreen priority-color"></div>
+            <div class="lightblue priority-color"></div>
+            <div class="black priority-color active"></div>
+        </div>
+
+    </div>
+
+    <script src="script.js">
+    </script>
+    <script>
+        // Write your solution here =====================================================
+        // WARNING: DO NOT EDIT THE BELOW CODE OR DATA
+
+        // DUMMY DATA FOR THE COLORS
+        let ticketsArr = [
+        {
+            ticketTask: "This is task 1 (lightgreen)",
+            ticketColor: "lightgreen",
+            ticketID: "dGSUFjfiq",
+        },
+        {
+            ticketTask: "This is task 2 (black)",
+            ticketColor: "black",
+            ticketID: "ay8dQS0o1",
+        },
+        {
+            ticketTask: "This is task 3 (lightblue)",
+            ticketColor: "lightblue",
+            ticketID: "fOqBFgQtx",
+        },
+        {
+            ticketTask: "This is task 4 (lightpink)",
+            ticketColor: "lightpink",
+            ticketID: "fOqBFgQtx",
+        },
+        ];
+
+        // CALLING createTicket() function for each value in ticketsArr
+        ticketsArr.forEach(function (ticket) {
+        createTicket(ticket.ticketTask, ticket.ticketColor, ticket.ticketID);
+        });
+
+        // ADDING TICKET TO DOM
+        function createTicket(ticketTask, ticketColor, ticketID) {
+        let id = ticketID || shortid();
+        let ticketCont = document.createElement("div");
+        ticketCont.setAttribute("class", "ticket-cont");
+
+        ticketCont.innerHTML = `<div class="ticket-color ${ticketColor}"></div>
+            <div class="ticket-id">${id}</div>
+            <div class="task-area">${ticketTask}</div>
+            <div class="ticket-lock">
+            <button>Locked</button>
+            </div>`;
+
+        let mainCont = document.querySelector(".main-cont");
+        mainCont.append(ticketCont);
+
+        let lockButton = ticketCont.querySelector('.ticket-lock button');
+        let taskArea = ticketCont.querySelector('.task-area');
+
+        lockButton.addEventListener('click', function() {
+            if (lockButton.innerText === 'Locked') {
+            lockButton.innerText = 'Unlocked';
+            taskArea.setAttribute('contenteditable', 'true');
+            ticketCont.querySelector('.ticket-lock').classList.replace('ticket-lock', 'ticket-unlock');
+            } else {
+            lockButton.innerText = 'Locked';
+            taskArea.setAttribute('contenteditable', 'false');
+            ticketCont.querySelector('.ticket-unlock').classList.replace('ticket-unlock', 'ticket-lock');
+            }
+            updateTicketArray(id, taskArea.innerText);
+        });
+
+        if (!ticketID) {
+            ticketsArr.push({ ticketTask, ticketColor, ticketID: id });
+            localStorage.setItem("tickets", JSON.stringify(ticketsArr));
+        }
+        }
+
+        function updateTicketArray(id, newTask) {
+        ticketsArr = ticketsArr.map(ticket => ticket.ticketID === id ? { ...ticket, ticketTask: newTask } : ticket);
+        localStorage.setItem("tickets", JSON.stringify(ticketsArr));
+        }
+
+    </script>
+
+
+
+</body>
+
+</html>
