@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- Please NOTE that the link to assets (like images) need to be set in global context.
+For example:
+To access an image from assets folder correct way to set src attribute is 
+
+src = 'profile.png'
+
+instead of 
+
+src = './assets/profile.png'
+-->
 
 <head>
     <meta charset="UTF-8" />
@@ -52,7 +62,10 @@
         font-size: 2rem;
         align-items: center;
         color: white;
+        }
 
+        .action-btn-cont:hover {
+        cursor: pointer;
         }
 
         .color {
@@ -84,7 +97,8 @@
         position: absolute;
         top: 30%;
         left: 25%;
-        display: flex;
+        display: none;
+
         }
 
 
@@ -142,21 +156,28 @@
         height: 2rem;
         }
 
-        .ticket-lock {
+        .ticket-lock,
+        .ticket-unlock {
         display: flex;
         font-size: 1.5rem;
         justify-content: flex-end;
         margin-top: 90px;
         margin-right: 5px;
+        }
 
+        .ticket-cont button {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: transparent;
+        color: white;
+        font-size: large;
+        border: 2px double #dfe4ea;
+        }
+
+        .ticket-cont button:hover {
+        cursor: pointer;
         }
 
         .add-btn:hover {
-        background-color: #4BB543;
-        }
-
-
-        .remove-btn:hover {
         background-color: #4BB543;
         }
 
@@ -174,6 +195,7 @@
 </head>
 
 <body>
+    <!-- TOOL BOX ELEMENTS -->
     <div class="toolbox-cont">
         <div class="toolbox-priority-cont">
             <div class="lightpink color"></div>
@@ -183,117 +205,72 @@
         </div>
 
         <div class="action-btn-cont">
-            <div class="add-btn">
-                <img src="plus-logo.png" alt="color-logo" height="50%">
-            </div>
             <div class="remove-btn">
                 <img src="cross-logo.png" alt="color-logo" height="50%">
             </div>
         </div>
     </div>
 
-
+    <!-- MAIN CONTAINER - Tickets holder -->
     <div class="main-cont">
-        <!-- <div class="ticket-cont">
-            <div class="ticket-color lightpink"></div>
-            <div class="ticket-id">#0</div>
-            <div class="task-area"> this is task 1</div>
-            <div class="ticket-lock">
-                <i class="fa-solid fa-lock"></i>
-            </div>
-        </div> -->
+        <!-- <div class="ticket-color ${ticketColor}"></div>
+       <div class="ticket-id">${id}</div>
+       <div class="task-area">${ticketTask}</div> -->
     </div>
-
-
-
-    <!-- Modal -->
-    <div class="modal-cont">
-
-        <textarea class="textArea-cont" placeholder="Enter Your Task" spellcheck="false">
-
-       </textarea>
-
-
-        <div class="priority-colors-container">
-            <div class="lightpink priority-color"></div>
-            <div class="lightgreen priority-color"></div>
-            <div class="lightblue priority-color"></div>
-            <div class="black priority-color active"></div>
-        </div>
-
     </div>
-
     <script defer>
-        localStorage.removeItem("ticketsDB");
+        let ticket = [{
+                ticketTask: "This is task 1 (lightgreen)",
+                ticketColor: "lightgreen",
+                ticketID: "dGSUFjfiq",
+            },
+            {
+                ticketTask: "This is task 2 (black)",
+                ticketColor: "black",
+                ticketID: "ay8dQS0o1",
+            },
+            {
+                ticketTask: "This is task 3 (lightblue)",
+                ticketColor: "lightblue",
+                ticketID: "fOqBFgQtx",
+            },
+            {
+                ticketTask: "This is task 4 (lightpink)",
+                ticketColor: "lightpink",
+                ticketID: "fOqBFgQtx",
+            },
+        ];
+
+        localStorage.setItem("ticketsDB", JSON.stringify(ticket));
     </script>
     <script >
-        let ticketsArr = JSON.parse(localStorage.getItem("ticketsDB")) || [];
+        // WRITE CODE HERE ===========================================
+        // Retrieve data from ticketsDB in local storage
+        const ticketsDB = JSON.parse(localStorage.getItem("ticketsDB"));
 
-        let modalCont = document.querySelector(".modal-cont");
-        let mainCont = document.querySelector(".main-cont");
-        let taskArea = document.querySelector(".textArea-cont");
-
-        let colors = ["lightpink", "lightgreen", "lightblue", "black"];
-        let allPriorityColors = document.querySelectorAll(".priority-color");
-
-        let modalPriorityColor = colors[colors.length - 1];
-        let ticketID = 0;
-
-        // fn to add to ticket to the UI
-        function createTicket(ticketTask, ticketColor) {
-            let id = ticketID++;
+        // Check if ticketsDB is not null and it's an array
+        if (Array.isArray(ticketsDB)) {
+            // Iterate over each ticket object
+            ticketsDB.forEach(ticket => {
+                // Create ticket UI for each ticket object
+                createTicket(ticket.ticketTask, ticket.ticketColor, ticket.ticketID);
+            });
+        }
+        // ADDING TICKET TO DOM
+        function createTicket(ticketTask, ticketColor, ticketID) {
+            let id = ticketID || shortid();
             let ticketCont = document.createElement("div");
             ticketCont.setAttribute("class", "ticket-cont");
 
             ticketCont.innerHTML = `<div class="ticket-color ${ticketColor}"></div>
-            <div class="ticket-id">#${id}</div>
-            <div class="task-area">${ticketTask}</div>
-            <div class="ticket-lock">
-            <i class="fa-solid fa-lock"></i>
-            </div>`;
+                <div class="ticket-id">${id}</div>
+                <div class="task-area">${ticketTask}</div>`;
+
+            let mainCont = document.querySelector(".main-cont");
             mainCont.append(ticketCont);
-
-            // WRITE CODE HERE=============================================
-            // Update ticketsArr with the new ticket
-            ticketsArr.push({ ticketTask, ticketColor, ticketID: id });
-
-            // Store the updated ticketsArr in localStorage
-            localStorage.setItem('ticketsDB', JSON.stringify(ticketsArr));
-            }
-
-        // TICKET IS CREATED WHEN SHIFT IS PRESSED
-        modalCont.addEventListener("keydown", function (e) {
-            let key = e.key;
-
-            if (key == "Shift") {
-                createTicket(taskArea.value, modalPriorityColor);
-                modalCont.style.display = "none";
-                addFlag = false;
-                taskArea.value = "";
-            }
-        });
-
-        let addBtn = document.querySelector(".add-btn");
-        let addFlag = true;
-
-        addBtn.addEventListener("click", function () {
-            addFlag = !addFlag;
-
-            if (addFlag == true) {
-                modalCont.style.display = "flex";
-            } else {
-                modalCont.style.display = "none";
-            }
-        });
-
-        // Load existing tickets from localStorage on page load
-        window.addEventListener("load", () => {
-            ticketsArr.forEach(ticket => {
-                createTicket(ticket.ticketTask, ticket.ticketColor);
-            });
-        });
-
+        }
     </script>
+
 </body>
 
 </html>

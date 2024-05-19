@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            padding: 30px;
+            height: 200px;
+            margin: 40px;
+        }
+        .grandparent {
+            border: red;
+            background-color: aquamarine;
+        }
+        .parent {
+            border: rgb(51, 18, 172);
+            background-color: rgb(80, 65, 221);
+        }
+        .child {
+            border: red;
+            background-color: rgb(216, 230, 96);
+        }
+    </style>
+</head>
+<body>
+    <div class="grandparent">
+        GrandParent
+        <div class="parent">
+            Parent
+            <div class="child">
+                Child
+            </div>
+        </div>
+    </div>
+    <script>
+        const grandparentRef =document.querySelector('.grandparent')
+    </script>
+</body>
+</html>

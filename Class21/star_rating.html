@@ -1,0 +1,138 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            padding: 40px;
+            
+        }
+        .star-rating {
+            width: 200px;
+            height: 200px;
+            display: flex;
+            column-gap: 5px;
+            justify-content: center;
+        }
+        .star {
+            width: 20px;
+            height: 20px;
+            background-color: yellow;
+        }
+        .star .fa-solid {
+            color: goldenrod;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Star rating - <span class="">
+
+        </span></h1>
+        <div class="star-rating">
+            <div class="star" ><i class="fa-solid fa-star" data-index="1"></i></div>
+            <div class="star" ><i class="fa-solid fa-star" data-index="2"></i></div>
+            <div class="star" ><i class="fa-solid fa-star" data-index="3"></i></div>
+            <div class="star" ><i class="fa-solid fa-star" data-index="4"></i></div>
+            <div class="star" ><i class="fa-solid fa-star" data-index="5"></i></div>
+        </div>
+    </div>
+    <script>
+        const starsRef =  document.querySelectorAll('.star');
+        let selectedIndex = 
+
+        // function toggleStar(ref) {
+        //     const isSolidStar = ref.classList.contains('fa-solid');
+        //     if (isSolidStar) {
+        //         ref.classList.add('fa-regular')
+        //         ref.classList.remove('fa-solid')
+        //     }else {
+        //         ref.classList.remove('fa-regular')
+        //         ref.classList.add('fa-solid')
+        //     }
+        // }
+
+
+        function selectStars(ref) {
+            const isSolidStar = ref.classList.contains('fa-solid');
+            ref.classList.add('fa-regular')
+            ref.classList.remove('fa-solid')
+        }
+
+        function deselectStars(ref) {
+            const isSolidStar = ref.classList.contains('fa-regular');
+            ref.classList.remove('fa-regular')
+            ref.classList.add('fa-solid')
+        }
+
+        function handleStarSelection(currentIdx) {
+
+        }
+
+        starsRef.forEach(starRef => {
+            starRef.addEventListener('click', function(e) {
+                console.log(e.target);
+                const selectedStringIndex = Number(e.target.dataset.index);
+
+                // for (let i=0; i < selectedStringIndex; i ++) {
+                //     selectStars(starRef[i].querySelector('i'));
+                // }
+                // for (let i=selectedStringIndex; i < starRef,length; i ++) {
+                //     deselectStars(starRef[i].querySelector('i'));
+                // }
+                // toggleStar(e.target);
+                // selectStars(e.target);
+                // deselectStars(e.target);
+            starRef.forEach((ref, idx) => {
+                if (idx < selectedStringIndex) {
+                    selectStars(ref.querySelector('i'))
+                }else {
+                    deselectStars(ref.querySelector('i'))
+                }
+            })
+            })
+            starRef.addEventListener('mouseover', function(e) {
+                console.log(e.target);
+                const selectedStringIndex = Number(e.target.dataset.index);
+
+                // for (let i=0; i < selectedStringIndex; i ++) {
+                //     selectStars(starRef[i].querySelector('i'));
+                // }
+                // for (let i=selectedStringIndex; i < starRef,length; i ++) {
+                //     deselectStars(starRef[i].querySelector('i'));
+                // }
+                // toggleStar(e.target);
+                // selectStars(e.target);
+                // deselectStars(e.target);
+                if (isNaN(selectedStringIndex)) {
+                    return;
+                }
+                starRef.forEach((ref, idx) => {
+                    // if (idx < selectedStringIndex) {
+                    //     selectStars(ref.querySelector('i'))
+                    // }else {
+                        deselectStars(ref.querySelector('i'))
+                    // }
+                })
+            })
+        })
+
+        const starRatingWraperRef = document.querySelector('.star-rating');
+
+        starRatingWraperRef.addEventListener('click', function(e) {
+            console.log('Star Wrapper Clicked');
+        })
+        starRatingWraperRef.addEventListener('mouseleave', function(e) {
+            console.log('Star Wrapper mouseleave');
+        })
+    </script>
+
+    
+</body>
+</html>
