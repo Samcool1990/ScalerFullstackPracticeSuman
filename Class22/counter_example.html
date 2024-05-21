@@ -1,0 +1,74 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="counter-wrapper">
+        <h1>Counter</h1>
+        <div>
+            <div> Result: <span id="result">0</span> </div>            
+            <div>
+                <span>Increament/Decreament by: </span>
+                <input placeholder="Enter Delta" id="delta" value="1"/>
+            </div>
+            <div>
+                <button id="increament">+</button>
+                <button id="decreament">-</button>
+                <button id="reset">reset</button>
+            </div>            
+        </div>
+    </div>
+    <script>
+        //Javascript
+        //data:
+        //1.DOM/ref   2.Inmemory/Json
+        let count = 0;
+        let delta = 1;
+        //DOM ref
+        const resultRef = document.getElementById('result');
+        const deltaRef = document.getElementById('delta');
+        const increamentButtonRef = document.getElementById('increament');
+        const decreamentButtonRef = document.getElementById('decreament');
+        const resetButtonRef = document.getElementById('reset');
+
+        //Methods  1.increament 2.Decreament
+        function increament() {
+            count += delta;
+        }
+        function decreament() {
+            count -= delta;
+        }
+        //Reset
+        function reset() {
+            count = 0;
+        }
+        //updateResult
+        function updateResult() {
+            resultRef.innerText = count;
+        }
+
+        //add Listners
+        function addListners() {
+            increamentButtonRef.addEventListener('click', function(e) {
+                increament();
+                updateResult();
+            })
+            decreamentButtonRef.addEventListener('click', function(e) {
+                decreament();
+                updateResult();
+            })
+            resetButtonRef.addEventListener('click', function(e) {
+                reset();
+                updateResult();
+            })
+            deltaRef.addEventListener('change', function(e) {
+                delta = e.target.value ? Number(e.target.value) : e;
+            })
+        }
+        
+        addListners();
+    </script>
+</body>
+</html>

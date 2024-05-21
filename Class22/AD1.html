@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Accordion Example</title>
+    <style>
+        /* Style for the accordion */
+        .accordion {
+            width: 300px;
+            margin: 20px auto;
+        }
+
+        .accordion-button {
+            background-color: #0074d9;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="accordion">
+        <div class="accordion-item">
+            <button class="accordion-button">Section 1</button>
+            <div class="accordion-content">
+                <p>This is the content for section 1.</p>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <button class="accordion-button">Section 2</button>
+            <div class="accordion-content">
+                <p>This is the content for section 2.</p>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <button class="accordion-button">Section 3</button>
+            <div class="accordion-content">
+                <p>This is the content for section 3.</p>
+            </div>
+        </div>
+        <!-- Add more sections as needed -->
+    </div>
+    <script >
+        document.addEventListener('click', function(e) {
+            const accordionButtons = document.querySelectorAll('.accordion-button')
+
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', function(e){
+                    const content = button.nextElementSibling;
+
+                    if (content.style.display === 'block') {
+                        content.style.display = 'none'
+                    }else {
+                        content.style.display = 'block'
+                    }
+                });
+            });
+
+        });
+    </script>
+</body>
+
+</html>

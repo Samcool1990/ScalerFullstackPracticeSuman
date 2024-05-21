@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    #sidebar {
+      position: fixed;
+      width: 250px;
+      height: 100vh;
+      background-color: #34495e;
+      color: #ffffff;
+      padding: 15px 30px;
+      transition: width 0.5s;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    #sidebar.collapsed {
+      width: 80px;
+    }
+
+    #main-content {
+      margin-left: 250px;
+      height: 100vh;
+      background-color: #f1c40f;
+      color: #34495e;
+      transition: margin-left 0.5s;
+      padding: 80px;
+    }
+
+    #main-content.expanded {
+      margin-left: 80px;
+    }
+
+    #toggle-button {
+      background-color: #e74c3c;
+      color: #ffffff;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #toggle-button:hover {
+      background-color: #c0392b;
+    }
+
+    </style>
+    <title>Collapsible Sidebar Challenge</title>
+</head>
+<body>
+    <div id="sidebar">
+        <button id="toggle-button">Toggle Sidebar</button>
+        <p>Sidebar Content</p>
+    </div>
+    <div id="main-content">Main Content</div>
+    <script >
+        document.getElementById('toggle-button').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('main-content');
+            sidebar.classList.toggle('collapsed');
+            mainContent.classList.toggle('expanded');
+        });
+    </script>
+</body>
+</html>
