@@ -1,0 +1,84 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        input {
+            width: 300px;
+            height: 60px;
+            padding: 5px 15px;
+            border-radius: 5px;
+            border: 1px solid rgb(67, 70, 67);
+
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <input type="text" placeholder="Search Product">
+    </div>    
+    <script>
+        function throttle(fn, delay) {
+            let flag = true;
+            return function(event) {
+                if (flag){
+                    flag = false;
+                    setTimeout(() => {
+                        fn(event);
+                        flag = true;
+                    }, delay);
+                };                
+            };
+        };
+
+        function trailingThrottle(fn, delay) {
+            let flag = true;
+            return function(event) {
+                if (!flag) {
+                    fn(event);
+                }             
+                
+                clearTimeout(flag);
+                setTimeout(() => {
+                    flag = false;;
+                }, delay);
+            };
+        };
+
+        // function leadingThrottle(fn, delay) {
+        //     let ref;
+        //     return function(event) {
+        //         if (!ref) {
+        //             fn(event);
+        //         }             
+                
+        //         clearTimeout(ref);
+        //         ref = setTimeout(() => {
+        //             ref = undefined;
+        //         }, delay);
+        //     };
+        // };
+
+        
+
+        function fn(e) {
+            console.log('Make a API call with: ', e.target.data);
+        };
+        const inputDebounceFn = trailingThrottle(fn, 300)
+                
+        const inputRef = document.querySelector('input');
+
+        inputRef.addEventListener('keyup', inputDebounceFn);
+
+
+    </script>
+</body>
+</html>
