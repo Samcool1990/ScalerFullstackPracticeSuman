@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Items Buy</title>
+</head>
+
+<body>
+    <p></p>
+    <!-- WARNING:
+        Don't make any changes outside the given function. (would fail test cases)
+        Write the required code and return the correct answer. -->
+    <script id="solution">
+        // Complete the function below
+        function debounce(func, wait) {
+        let timer = null; // Initialize the timer variable
+
+        // Return the debounced function
+        return function(...args) {
+            // Clear any existing timer
+            window.clearTimeout(timer);
+
+            // Set a new timer to execute the function after the specified interval
+            timer = window.setTimeout(() => {
+            // Call the original function with the provided arguments and context
+            func.call(this, ...args);
+            }, wait);
+        };
+        }
+    </script>
+</body>
+
+</html>
