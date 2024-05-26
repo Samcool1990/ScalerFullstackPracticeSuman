@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Items Buy</title>
+</head>
+
+<body>
+    <p></p>
+    <!-- WARNING:
+        Don't make any changes outside the given function. (would fail test cases)
+        Write the required code and return the correct answer. -->
+
+    <script id="solution">
+        // Complete the function below
+        function throttle(fn, time) {
+        let timeout; // Initialize the timer variable
+
+        // Return the throttled function
+        return function () {
+            // If the timer is already set, exit the function
+            if (timeout) return;
+
+            const context = this; // Capture the context
+            const args = arguments; // Capture the arguments
+
+            // Define a callback function for the timer
+            const later = () => {
+            // Call the original function with context and arguments
+            fn.call(context, ...args);
+
+            // Reset the timer variable after execution
+            timeout = null;
+            };
+
+            // Set the timer using setTimeout
+            timeout = setTimeout(later, time);
+        };
+        }
+    </script>
+</body>
+
+</html>
