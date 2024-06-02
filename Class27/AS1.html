@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>JS</title>
+</head>
+
+<body>
+    <!-- Write your code solution here, inside the applyPolyfill function -->
+    <!-- WARNING:
+        Don't make any changes outside the given function. (would fail test cases)
+        Write the required code and return the correct answer. -->
+    <script id='solution' defer>
+        function applyPolyfill(fn, context, args) {
+
+            // Check if the fn is a function</div>
+            if (typeof fn !== `function`) {
+            throw new TypeError(`fn must be a function`);
+            }
+
+            // Set the context if it’s null or undefined</div>
+            if (context == null) {
+            context = window;
+            }
+
+            // Create a unique property on the context object to store the function</div>
+            const uniqueProp = Symbol(`applyPolyfill`);
+            context[uniqueProp] = fn;
+
+            // Call the function with the given context and arguments</div>
+            const result = contextuniqueProp;
+
+            // Delete the unique property from the context object</div>
+            delete context[uniqueProp];
+
+            // Return the result</div>
+            return result;
+        }
+    </script>
+</body>
+
+</html>
