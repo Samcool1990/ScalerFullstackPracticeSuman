@@ -4,44 +4,39 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const Home = () => {
-  return(
-    <h1>YooHoo React!</h1>
+const Detail = () => {
+  return (
+    <ul>
+        <li>Detail 1</li>
+        <li>Detail 2</li>
+        <li>Detail 3</li>
+        <li>Detail 4</li>
+      </ul>
   )
 }
 
 const Heading = (props) => {
-  
   return (
-    <h1>  {props.name} {props.surname}</h1>
-
+    <h1>YooHoo React! - {props.name} {props.surname}</h1>
   )
 }
 
-const Component  = () => {
+const Home = () => {
   return (
-    <ul>
-      <Heading name = "Suman 1" surname='Pathak'/>
-      <Heading name = "Suman 2" surname='Pathak'/>
-      <Heading name = "Suman 3" surname='Pathak'/>
-      <Home />
-        <li>Details 1</li>
-        <li>Details 2</li>
-        <li>Details 3</li>
-        <li>Details 4</li>
-    </ul>
+    <div>
+      <Heading name="Payal" surname="Butala"/>
+      <Heading name="Gyanendra" />
+      <Heading name="Pathak" />
+      <p>This is detail section</p>
+      <Detail />
+      <button>Confirm</button>
+    </div>
   )
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  
-  <Component />
-  
-  // <React.StrictMode>
-  //   <App />
-  // </React.StrictMode>
-  // "HelloWorld!"
+  <Home />
 );
 
 // If you want to start measuring performance in your app, pass a function
