@@ -5,3 +5,7 @@ Agenda:
 - Create routes
 - Redirects, 404 pages
 - MovieList
+- Header
+- Pagination
+- Cache/ optimization
+- Add to Favourite
