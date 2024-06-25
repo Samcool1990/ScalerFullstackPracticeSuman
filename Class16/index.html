@@ -55,9 +55,9 @@
       <div class="card" data-color="blue"></div>
     </div>
     <script>
-        const cardsRef = document.querySelectorAll('.card');
+        const cardsRefs = document.querySelectorAll('.card');
 
-        cardsRef.forEach((cardRef) => {
+        cardsRefs.forEach((cardRef) => {
             cardRef.addEventListener('click', function(e) {
                 // console.log(e.target.getAttribute('data-color'));  
                 console.log(e.target.dataset.color);
