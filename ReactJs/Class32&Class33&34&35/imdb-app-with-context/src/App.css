@@ -125,6 +125,10 @@
   padding: 10px 15px;
 }
 
+.favourite-section .right-section .table td, .favourite-section .right-section .table th span{
+  cursor: pointer;
+}
+
 .favourite-section .left-section .genres-section {
   width: 150px;
 }
@@ -133,6 +137,10 @@
   padding: 10px 15px;
   border: 1px solid #ccc;
   background-color: white;
+}
+
+.favourite-section .left-section .genres-section .genre.selected {
+  background-color: aquamarine;
 }
 
 .favourite-section .left-section .genres-section .genre:hover {
