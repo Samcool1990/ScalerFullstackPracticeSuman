@@ -16,8 +16,11 @@
         Write the required code and return the correct answer. -->
     <script id='solution' defer>
         function periodicPrinter(callback, timeInterval) {
-            // write solution here ============
-            return setInterval(callback,timeInterval); 
+            const intervalId = setInterval(() => {
+                callback();
+            }, timeInterval);
+
+            return intervalId;
         }
     </script>
 </body>
