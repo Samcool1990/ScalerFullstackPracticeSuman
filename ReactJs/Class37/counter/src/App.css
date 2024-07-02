@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  display:  flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -41,7 +41,7 @@
   }
 }
 
+
 button {
   margin: 0 15px;
 }
-
