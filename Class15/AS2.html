@@ -35,14 +35,13 @@ src = './assets/profile.png'
 
 <script>
     // Write your JS program here ====
-    const newLi = document.createElement('li');
-    newLi.innerText = 7;
-
     const ulRef = document.querySelector('ul');
     const liEightRef = document.querySelector('ul li:nth-child(7)');
 
-    ulRef.insertBefore(newLi, liEightRef);
+    const newLi = document.createElement('li');
+    newLi.textContent = '7';
 
+    ulRef.insertBefore(newLi, liEightRef);
 </script>
 
 </html>
