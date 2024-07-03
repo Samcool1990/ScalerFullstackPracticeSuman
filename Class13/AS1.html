@@ -7,8 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
-
 <body>
     <script defer>
         function fetchByCb(fileName, cb) {
@@ -23,15 +21,20 @@
         Write the required code and return the correct answer. -->
     <script id='solution' defer>
         function twoSeries(file1, file2, ansArray) {
-            fetchByCb(file1, function(content1) {
-                ansArray.push(content1);
-                fetchByCb(file2, function(content2) {
-                    ansArray.push(content2);
-                    ansArray.push('All files have been read');
-                });
-            });
+            //write your code here
+            function cb1(content) {
+                ansArray.push(content);                
+                // start next task</div>
+                fetchByCb(file2, cb2)
+            }
+
+            function cb2(content) {
+                ansArray.push(content);
+                ansArray.push('All files have been read');
+            }
+
+            fetchByCb(file1, cb1)
         }
     </script>
 </body>
-
 </html>
