@@ -1,75 +1,37 @@
-//Creating our promise based on result
+// Creating our promise based on result
 
-const boradPromise = new Promise(function(resolve, reject) {
+const boardPromise = new Promise(function(resolve, reject){
     const passingScore = 95;
-    const studentScore = 99 ;
+    const studentScore = 99;
 
-    //SEt Delay
     setTimeout(function() {
-
+        if (studentScore >= passingScore){
+            resolve('Yes, completed');
+        } else {
+            reject('Not completed');
+        }
     }, 5000);
-    if (studentScore >= passingScore) {
-        resolve('Yes, Completed');
-    }else {
-        reject('Not Completed');
-    }
 });
 
 
-//Consume
+// Consume
+
 console.log('Start');
 
-const p = boradPromise
-    .then(function(data) {
-        //SUCCESS
-        console.log('SUCCESS: ',data);
+const p = boardPromise
+    .then(function(data) { 
+        // Success 
+        console.log('Success: ', data);
         return data;
-    }).then(function(data) {
-        console.log('UpperCase:', data.toUpperCase());
-
     })
-    .catch(function(err) {
-        //FAILURE
-        console.log('FAILURE: ',err);
+    .then(function(data) {
+        console.log('UpperCase: ', data.toUpperCase());
     })
-console.log(p)    ;
+    .catch(function(err){ 
+        // Failure
+        console.log('Failure: ', err);
+    });
 
-console.log('End');  
+console.log(p);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+console.log('End');

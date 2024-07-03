@@ -186,49 +186,43 @@ const data = {
     "limit": 30
 };
 
-const myFetchAllTodo = function(){
+const fetchAllTodo = function() {
     return new Promise(function(resolve, reject) {
         setTimeout(function() {
             resolve(data);
-        }, 10000)
-});
+        }, 10000);
+    });
 }
 
 const fetchTodoById = function(id) {
-    //returna promise with 5 sec delay
-    //with specific todo id 
+    // Write a promise to return a todo object 
+    // after 5 sec delay 
+    // with a given todo Id.
     return new Promise(function(resolve, reject) {
-        setTimeout(function() {
-            // Find the todo with the given id in the data
-            const result = data.todos.find(function(todo) {
-                return todo.id === id; //fail
-                return todo.id == id; //Pass
-            });
-
-            // If todo found, resolve the Promise with the todo object
+        setTimeout(function () {
+            const result = data.todos.find(function(todo){
+                return todo.id === id;
+            })
             if (result) {
                 resolve(result);
             } else {
-                // If todo not found, reject the Promise with an error message
-                reject('Todo not found');
+                reject(`Unable to find todo with id = ${id}`);
             }
-        },5000);
-
-    })
-    
+        }, 5000);
+    }); 
 }
 
-// myFetchAllTodo()
+
+// fetchAllTodo()
 //     .then(function(data) {
 //         console.log(data);
-//     });
+//     })
 
-
-// Usage example:
-fetchTodoById("4")
-    .then(function(todo) {
-        console.log(todo);
+fetchTodoById(4)
+    .then(function(data) {
+        // return todo object with id=4
+        console.log(data);
     })
-    .catch(function(error) {
-        console.log(error);
-    });
+    .catch(function(err) {
+        console.log('Error', err)
+    })
