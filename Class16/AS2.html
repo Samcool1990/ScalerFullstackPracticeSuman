@@ -24,20 +24,15 @@
 <script>
     const cell = document.querySelector('.cell');
 
-    // Function to draw the jail
-    function drawJail() {
+    function drawJail(){
         cell.style.backgroundImage = 'url(https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/055/850/original/jail.jpg?1699030242)';
     }
 
-    // Function to remove the jail
-    function removeJail() {
+    function removeJail(){
         cell.style.backgroundImage = 'none';
     }
 
-    // Event listener for mouse entering the cell
-    cell.addEventListener('mouseenter', drawJail);
-
-    // Event listener for mouse leaving the cell
-    cell.addEventListener('mouseleave', removeJail);
+    cell.addEventListener('mouseenter', drawJail)
+    cell.addEventListener('mouseleave', removeJail)
 </script>
 </html>

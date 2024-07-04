@@ -66,23 +66,23 @@ src = './assets/profile.png'
 </body>
 
 <script>
-    // Write your JS Program here
-    // Get all card elements
-    const cards = document.querySelectorAll('.card');
+    // 1. Use querySelectorAll to get an array of card elements.
+    let cards = document.querySelectorAll('.card')
 
-    // Add double click event listener to each card
-    cards.forEach(card => {
-        card.addEventListener('dblclick', function() {
-            // Get the data-color attribute value
-            const color = this.getAttribute('data-color');
+    // 2. Traverse through the array and add an evenListener of 'dblclick' on each of the card.
+    for (let i = 0; i < cards.length; i++) {
 
-            // Add the fetched color as a class to the card
-            this.classList.add(color);
+        cards[i].addEventListener('dblclick', function (e) {
 
-            // Change the data-color attribute to "used"
-            this.setAttribute('data-color', 'used');
-        });
-    });
+            // 3. Use getAttribute to fetch the color.
+            let classTobeAttached = e.currentTarget.getAttribute('data-color')
 
+            // 4. Use setAttribute to change data-color attribute to 'used'.
+            e.currentTarget.setAttribute('data-color', 'used')
+
+            // 5. Access the classList and add the fetched color as a class using 'classList.add'
+            e.currentTarget.classList.add(classTobeAttached)
+        })
+    }
 </script>
 </html>
