@@ -123,16 +123,17 @@ src = './assets/profile.png'
     const categoryRef = document.getElementById('category');
 
     categoryRef.addEventListener('change', function(e) {
-        filterCard(e.target.value);
+        filterFunction(e.target.value);
         // console.log(e.target.value);
     });
 
 
-    function filterCard(selectedValue) {
-        const moviesRef = document.querySelectorAll('.movies');
-        moviesRef.forEach(movieRef => {
+    function filterFunction(selectedValue){
+        const moviesRefs = document.querySelectorAll('.movies');
+        moviesRefs.forEach(movieRef => {
             const priceRef = movieRef.querySelector('.price');
             console.log(movieRef);
+
             if (selectedValue === 'none') {
                 movieRef.style.display = 'inline-block';
             } else if (priceRef.dataset.category === selectedValue) {
@@ -142,8 +143,6 @@ src = './assets/profile.png'
             }
         });
     };
-
-
-
+    
 </script>
 </html>

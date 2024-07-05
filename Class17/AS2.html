@@ -44,17 +44,17 @@ src = './assets/profile.png'
     </div>
 
     <script>
-        let red = document.querySelector(".red");
-        let yellow = document.querySelector(".yellow");
+        const yellow = document.querySelector('.yellow');
+        const red = document.querySelector('.red');
 
-        red.addEventListener('click', (e) => {
-            window.alert('red is clicked');
+        yellow.addEventListener('click', function(e){
+            window.alert("Yellow is Clicked");
+            e.stopPropagation();
         });
 
-        yellow.addEventListener('click', (e) => {
-            window.alert('yellow is clicked');
-            e.stopPropagation(); // Prevents the event from bubbling up to the red box
-        });
+        red.addEventListener('click', function(){
+            window.alert("Red is Clicked");
+        });       
     </script>
 </body>
 

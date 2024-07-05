@@ -39,26 +39,23 @@ src = './assets/profile.png'
         </li>
     </ul>
     <script>
-        // Write your JS program here =========
-        // Get the "Remove All" button and the list of tasks
-        let removeAllButton = document.getElementById('all');
-        let tasksList = document.getElementById('tasks');
-        
-        // Add event listener to "Remove All" button to hide the entire list
-        removeAllButton.addEventListener('click', () => {
-            tasksList.style.display = 'none';
+        const removeRef = document.getElementById('all');
+        const listRef = document.getElementById('tasks');
+
+        removeRef.addEventListener('click', function(){
+            listRef.style.display = 'none';
         });
-        
-        // Get all individual delete buttons
-        let deleteButtons = document.querySelectorAll('.buttons');
-        
-        // Add event listeners to each delete button to hide their corresponding list item
-        deleteButtons.forEach(button => {
-            button.addEventListener('click', (event) => {
-                let listItem = event.target.closest('li');
-                listItem.style.display = 'none';
-            });
+
+        const deleteButton = document.querySelectorAll('.buttons')
+        deleteButton.forEach(li => {
+            li.addEventListener('click', function(e) {
+                let listItem = e.target.closest('li');
+                listItem.style.display = 'none'
+            })
+            
         });
+
+
     </script>
 </body>
 
