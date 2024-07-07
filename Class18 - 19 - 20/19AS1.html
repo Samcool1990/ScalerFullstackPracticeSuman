@@ -67,65 +67,50 @@ src = './assets/profile.png'
 
     <script>
         // Write your solution here =====================================================
-        // Array of ticket objects
-        let ticketsArr = [
-        { ticketTask: "This is task 1 (lightgreen)", ticketColor: "lightgreen", ticketID: "dGSUFjfiq" },
-        { ticketTask: "This is task 2 (black)", ticketColor: "black", ticketID: "ay8dQS0o1" },
-        { ticketTask: "This is task 3 (lightblue)", ticketColor: "lightblue", ticketID: "fOqBFgQtx" },
-        { ticketTask: "This is task 4 (lightpink)", ticketColor: "lightpink", ticketID: "fOqBFgQtx" }
-        ];
 
-        // Function to create and add a ticket to the document
-        function createTicket(ticketTask, ticketColor, ticketID) {
-        let id = ticketID || shortid(); // Ensure unique ID if not provided
-        let ticketCont = document.createElement("div");
-        ticketCont.setAttribute("class", "ticket-cont");
+        // Array of ticket objects        
+        let toolBoxColors = document.querySelectorAll(".color");
+        // TOOL BOX - COLOR FILTERS
+        for (let i = 0; i < toolBoxColors.length; i++) {
+            toolBoxColors[i].addEventListener("click", function () {
+            let selectedToolBoxColor = toolBoxColors[i].classList[0];
 
-        ticketCont.innerHTML = `
-            <div class="ticket-color ${ticketColor}"></div>
-            <div class="ticket-id">#${id}</div>
-            <div class="task-area">${ticketTask}</div>
-            <div class="ticket-lock">
-            <i class="fa-solid fa-lock"></i>
-            </div>`;
-
-        let mainCont = document.querySelector(".main-cont");
-        mainCont.append(ticketCont);
-
-        if (!ticketID) {
-            ticketsArr.push({ ticketTask, ticketColor, ticketID: id });
-            localStorage.setItem("tickets", JSON.stringify(ticketsArr));
-        }
-        }
-
-        // Function to remove all tickets from the document
-        function removeAllTickets() {
-        let ticketConts = document.querySelectorAll(".ticket-cont");
-        ticketConts.forEach(ticket => ticket.remove());
-        }
-
-        // Initial population of tickets
-        ticketsArr.forEach(ticket => createTicket(ticket.ticketTask, ticket.ticketColor, ticket.ticketID));
-
-        // Function to filter and display tickets based on color
-        function filterTicketsByColor(color) {
-        removeAllTickets();
-        let filteredTickets = ticketsArr.filter(ticket => ticket.ticketColor === color);
-        filteredTickets.forEach(ticket => createTicket(ticket.ticketTask, ticket.ticketColor, ticket.ticketID));
-        }
-
-        // Function to display all tickets
-        function displayAllTickets() {
-        removeAllTickets();
-        ticketsArr.forEach(ticket => createTicket(ticket.ticketTask, ticket.ticketColor, ticket.ticketID));
-        }
-
-        // Event listeners for color filters
-        document.querySelectorAll(".color").forEach(colorBox => {
-        let color = colorBox.classList[0];
-        colorBox.addEventListener("click", () => filterTicketsByColor(color));
-        colorBox.addEventListener("dblclick", displayAllTickets);
+            let filteredTickets = ticketsArr.filter(function (ticketObj) {
+            return selectedToolBoxColor === ticketObj.ticketColor;
         });
+
+        let allTickets = document.querySelectorAll(".ticket-cont");
+
+        for (let i = 0; i < allTickets.length; i++) {
+            allTickets[i].remove();
+        }
+
+        filteredTickets.forEach(function (filteredObj) {
+            createTicket(
+                filteredObj.ticketTask,
+                filteredObj.ticketColor,
+                filteredObj.ticketID
+                );
+            });
+        });
+
+        toolBoxColors[i].addEventListener("dblclick", function () {
+        let allTickets = document.querySelectorAll(".ticket-cont");
+
+        for (let i = 0; i < allTickets.length; i++) {
+            allTickets[i].remove();
+        }
+
+        ticketsArr.forEach(function (ticketObj) {
+            createTicket(
+                ticketObj.ticketTask,
+                ticketObj.ticketColor,
+                ticketObj.ticketID
+                );
+                });
+            });
+        }
+            
     </script>
 </body>
 </html>
