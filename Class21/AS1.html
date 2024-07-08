@@ -80,7 +80,7 @@ src = './assets/profile.png'
         <h1>Counter</h1>
         <span id="number" class="number">0</span>
         <div class="row">Increment / Decrement by 
-            <input id="increment" type="number" min="1" max="10" value="1" />
+            <input id="increment" type="number" min="1" max="10"  />
         </div>
         <div class="row">
             <button id="add" class="add">+</button>
@@ -89,40 +89,37 @@ src = './assets/profile.png'
         <button id="reset" class="reset">Reset</button>
     </div>
     <script >
-        const numberDisplay = document.getElementById('number');
-        const increamentInput = document.getElementById('increment');
-        const addButton = document.getElementById('add');
-        const subtractButton = document.getElementById('subtract');
-        const resetButton = document.getElementById('reset')
+        // Get references to the DOM elements
+        let incrementField = document.getElementById("increment");
+        let addButton = document.getElementById("add");
+        let subtractButton = document.getElementById("subtract");
+        let resetButton = document.getElementById("reset");
+        let currValueHolder = document.getElementById("number");
 
-        let currentValue = 0;
-        
-        //Function to update the displayed number
-        function updateDisplay() {
-            numberDisplay.textContent = currentValue;
-        }
+        // Initialize incrementNumber to 1
+        let incrementNumber = 5;
 
-        // Add event listener for the add button
-        addButton.addEventListener('click', function(e) {
-            const increamentValue = parseInt(increamentInput.value);
-            currentValue += increamentValue;
-            updateDisplay();
-        })
-        // Add event listener for the Substract button
-        subtractButton.addEventListener('click', function(e) {
-            const decrementValue = parseInt(increamentInput.value);
-            currentValue -= decrementValue;
-            updateDisplay();
-        })
+        // Event listener for the increment field to update incrementNumber when its value changes
+        incrementField.addEventListener("change", function (e) {
+            incrementNumber = parseInt(e.target.value);
+        });
 
-        // Add event listener for the reset button
-        resetButton.addEventListener('click', function(e) {
-            currentValue = 0;
-            updateDisplay();
-        })
-        //initial display update
-        updateDisplay();
+        // Event listener for the add button to add the incrementNumber to the current value
+        addButton.addEventListener("click", function (e) {
+            let total = parseInt(currValueHolder.innerText) + incrementNumber;
+            currValueHolder.innerText = total;
+        });
 
+        // Event listener for the subtract button to subtract the incrementNumber from the current value
+        subtractButton.addEventListener("click", function (e) {
+            let total = parseInt(currValueHolder.innerText) - incrementNumber;
+            currValueHolder.innerText = total;
+        });
+
+        // Event listener for the reset button to reset the current value to 0
+        resetButton.addEventListener("click", function (e) {
+            currValueHolder.innerText = 0;
+        });
     </script>
 </body>
 

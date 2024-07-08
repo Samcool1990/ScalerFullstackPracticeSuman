@@ -59,37 +59,45 @@ src = './assets/profile.png'
         </div>
     </div>
     <script >
+        // Get references to all input elements with the class 'input'
         const inputs = document.querySelectorAll('.input');
 
+        // Add event listeners to each input element
         inputs.forEach((input, index) => {
-            input.addEventListener('input', (e) => {
-                // Allow only single-digit numbers
-                const digit = parseInt(e.data);
-                if (isNaN(digit)) {
-                    input.value = '';
+            // Event listener for 'input' event
+            input.addEventListener('input', function (e) {
+                const val = e.target.value;
+
+                // If the input is not a number, reset the input value
+                if (isNaN(val)) {
+                    e.target.value = '';
                     return;
                 }
 
-                // Move focus to the next input field
-                if (index < inputs.length - 1 && digit !== null) {
-                    inputs[index + 1].focus();
+                // If the input is a number and not empty, move to the next input field
+                if (val !== '') {
+                    const nextInput = input.nextElementSibling;
+                    if (nextInput) {
+                        nextInput.focus();
+                    }
                 }
             });
 
-            input.addEventListener('keydown', (e) => {
-                const key = e.key;
-                if (key === 'Backspace' || key === 'Delete') {
+            // Event listener for 'keydown' event to handle Backspace and Delete keys
+            input.addEventListener('keydown', function (e) {
+                const key = e.key.toLowerCase();
+                
+                // If Backspace or Delete key is pressed, clear the input and move to the previous input field
+                if (key === 'backspace' || key === 'delete') {
                     e.preventDefault();
-                    // Remove input from the current field
-                    input.value = '';
-                    // Move focus to the previous input field
-                    if (index > 0) {
-                        inputs[index - 1].focus();
+                    e.target.value = '';
+                    const prevInput = input.previousElementSibling;
+                    if (prevInput) {
+                        prevInput.focus();
                     }
                 }
             });
         });
-
 
     </script>
 </body>
