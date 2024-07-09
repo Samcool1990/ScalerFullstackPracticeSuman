@@ -1,0 +1,39 @@
+/* src/Accordion.css */
+
+.ui.styled.accordion {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.title {
+  padding: 10px;
+  cursor: pointer;
+  background: #f1f1f1;
+  border-bottom: 1px solid #ccc;
+  transition: background 0.3s ease;
+}
+
+.title:hover {
+  background: #ddd;
+}
+
+.content {
+  padding: 10px;
+  display: none;
+  border-bottom: 1px solid #ccc;
+}
+
+.content p {
+  margin: 0;
+}
+
+.title.active,
+.content.active {
+  background: #fff;
+}
+
+.content.active {
+  display: block;
+}
