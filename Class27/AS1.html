@@ -16,12 +16,12 @@
 
             // Check if the fn is a function</div>
             if (typeof fn !== `function`) {
-            throw new TypeError(`fn must be a function`);
+                throw new TypeError(`fn must be a function`);
             }
 
             // Set the context if it’s null or undefined</div>
             if (context == null) {
-            context = window;
+                context = window;
             }
 
             // Create a unique property on the context object to store the function</div>
