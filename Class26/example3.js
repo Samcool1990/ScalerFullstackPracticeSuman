@@ -1,22 +1,22 @@
 class Bird {
-    #breed
-    constructor(breed,name) {
+    #breed;
+    constructor(breed, name) {
         this.#breed = breed;
         this.name = name;
-        
     }
-    fly = function() {            
-        console.log('I can fly');  
+
+    fly() {
+        console.log('It can fly');
     }
-    
+
     getDescription() {
         console.log(`${this.name} is a bird of breed ${this.#breed}`)
     }
 }
 
-class Penguin extends Bird {
-    constructor(country) {
-        super(breed,name);
+class Pengiun extends Bird{
+    constructor(country, breed, name) {
+        super(breed, name)
         this.country = country;
     }
 
@@ -25,4 +25,4 @@ class Penguin extends Bird {
     }
 }
 
-const MyPenguin = new Penguin('India', 'X', 'India');
+const MyPengiun = new Pengiun('India', 'X', 'Sweetu');

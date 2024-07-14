@@ -6,3 +6,4 @@ const car = {
         }
     }
   };
+car.engine.start = car.engine.start.bind(car);
