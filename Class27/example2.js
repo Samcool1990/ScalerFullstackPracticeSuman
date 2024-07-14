@@ -2,7 +2,7 @@ const person1 = {
     name:'Mrinal',
     age: 25,
 
-    prinNameAndAge: function(location, isMarried){
+    printNameAndAge: function(location, isMarried){
         console.log(this, location, isMarried);
     }, 
 };
@@ -13,11 +13,11 @@ const person2 = {
     age: 30
 };
 
-person1.prinNameAndAge('New York');
+person1.printNameAndAge('New York');
 
-person1.prinNameAndAge.call(person2, 'San Fransico', true);
+person1.printNameAndAge.call(person2, 'San Fransico', true);
 
-person1.prinNameAndAge.apply(person2, ['San Fransico', true]);
+person1.printNameAndAge.apply(person2, ['San Fransico', true]);
 
 
 const alice = {

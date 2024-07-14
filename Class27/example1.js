@@ -29,7 +29,7 @@ b.myMap((item) => item/2);
 
 
 
-//Plyfill for filter
+//Polyfill for filter
 
 a.myFilter(item => item % 2 === 0);
 
