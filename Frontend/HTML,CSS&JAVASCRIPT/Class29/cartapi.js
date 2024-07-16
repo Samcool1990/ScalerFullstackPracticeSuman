@@ -1,80 +1,37 @@
-//'https://fakestoreapi.com/carts/user/2'
-//'https://fakestoreapi.com/user/1'
+// Cart: https://fakestoreapi.com/carts/user/2
+// User: https://fakestoreapi.com/users/1
 
-//scenario 1: Fetch data for cart and user that we need to show in header.
+// Scenario: Fetch data for cart and user that we need to show in header
 
-
-
-
-
-async function fetchFunc() {
+async function headerDetails() {
     console.log(performance.now());
-    url1 = 'https://fakestoreapi.com/carts/user/2'
-    url2 = 'https://fakestoreapi.com/carts/user/2'
-
-
-    const reponseCart = await fecth(url1);
-    const reponseUser = await fecth(url2);
-
-    const cartData = reponseCart.json();
-    const carUser = reponseUser.json();
-
-    console.log(cartData);
-    console.log(carUser);
-
+    const userDetails = await fetch('https://fakestoreapi.com/users/1');
+    const cartDetails = await fetch('https://fakestoreapi.com/carts/user/2');
+    console.log(await userDetails.json(), await cartDetails.json());
     console.log(performance.now());
 }
 
-fetchFunc();
+headerDetails();
 
 
+async function headerDetailsInParallel() {
+    console.log(performance.now());
+    const data = await Promise.allSettled([fetch('https://fakestoreapi.com/users/1'),fetch('https://fakestoreapi.com/carts/user/2')]);
+    // const data = await Promise.all([fetch('https://fakestoreapi.com/users/1'),fetch('https://fakestoreapi.com/carts/user/2')]);
+    console.log(data);
+    console.log(performance.now());
+}
+
+headerDetailsInParallel();
 
 
+// User Details: https://dummyjson.com/users/2 , https://fakestoreapi.com/users/2
 
 
+async function fetchUserData() {
+    const data = await Promise.any([fetch('https://fakestoreapi.com/users/1'),fetch('https://fakestoreapi.com/carts/user/2')]);
+    // const data = await Promise.race([fetch('https://fakestoreapi.com/users/1'),fetch('https://fakestoreapi.com/carts/user/2')]);
+    console.log(data);
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+fetchUserData();
