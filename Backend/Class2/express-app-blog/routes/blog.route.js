@@ -1,13 +1,15 @@
 import express from 'express';
+import {getAllBlog,getBlogById, deleteBlogById, CreateBlog } from '../controllers/blog.controller.js'
 
 const router = express.Router();
 
-router.get('/:userId', (req, res) => {});
+router.get('/', getAllBlog);
+router.get('/:blogId', getBlogById);
 
-router.post('/', (req, res) => {});
+router.post('/', CreateBlog);
 
-router.put('/:userId', (req, res) => {});
+router.put('/:blogId', (req,res) => {});
 
-router.delete('/:userId', (req, res) => {});
+router.delete('/:blogId', deleteBlogById);
 
 export default router;
