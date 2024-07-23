@@ -2,22 +2,24 @@ import fs from 'fs';
 import Blog from '../model/blog.model.js';
 
 
-export const getAllBlog = (req,res) => {
+export const getAllBlog = async (req,res) => {
     try{
-        const blogData = fs.readFileSync('mocks/blog.mock.json');
-        res.status(200).send(JSON.parse(blogData))
+        // const blogData = fs.readFileSync('mocks/blog.mock.json');
+        const allBlogsData = await Blog.find({});
+        res.status(200).send(allBlogsData);
     }catch(e){
         res.status(500).send(e.message);
     }
 
 };
 
-export const getBlogById = (req,res) => {
+export const getBlogById = async (req,res) => {
     try{
         const blogId = req.params.blogId
-        const blogData = fs.readFileSync('mocks/blog.mock.json');
-        const blogDataById = JSON.parse(blogData).find(blog => blog.id == blogId);
-        res.status(200).send(blogDataById);
+        // const blogData = fs.readFileSync('mocks/blog.mock.json');
+        // const blogDataById = JSON.parse(blogData).find(blog => blog.id == blogId);
+        const blogData = await Blog.findById(blogId);
+        res.status(200).send(blogData);
     }catch(e){
         res.status(500).send(e.message);
     }
@@ -25,15 +27,15 @@ export const getBlogById = (req,res) => {
 };
 
 
-export const deleteBlogById = (req,res) => {
+export const deleteBlogById = async (req,res) => {
     try{
         const blogId = req.params.blogId
-        const blogData = JSON.parse(fs.readFileSync('mocks/blog.mock.json'));
-        const blogIndexDataById = blogData.findIndex(blog => blog.id == blogId);
-        
-        blogData.splice(blogIndexDataById,1);
-        fs.writeFileSync('mocks/blog.mock.json',JSON.stringify(blogData));
-        res.status(200).send('Blog Deleted');
+        // const blogData = JSON.parse(fs.readFileSync('mocks/blog.mock.json'));
+        // const blogIndexDataById = blogData.findIndex(blog => blog.id == blogId);        
+        // blogData.splice(blogIndexDataById,1);
+        // fs.writeFileSync('mocks/blog.mock.json',JSON.stringify(blogData));
+        const data = await Blog.findByIdAndDelete(blogId);
+        res.status(200).send(data);
     }catch(e){
         res.status(500).send(e.message);
     }
@@ -56,15 +58,16 @@ export const CreateBlog = async (req,res) => {
 
 
 
-export const updateBlogById = (req, res) => {
+export const updateBlogById = async (req, res) => {
     try {
         const newBlogData = req.body;
         const blogId = req.params.blogId;
-        let blogData = JSON.parse(fs.readFileSync('mocks/blog.mock.json'));
-        const blogIndexDataById = blogData.findIndex(blog => blog.id == blogId);
-        blogData[blogIndexDataById] = {  ...blogData[blogIndexDataById], ...newBlogData };
-        fs.writeFileSync('mocks/blog.mock.json', JSON.stringify(blogData));
-        res.status(200).send("Blog updated successfully!");
+        // let blogData = JSON.parse(fs.readFileSync('mocks/blog.mock.json'));
+        // const blogIndexDataById = blogData.findIndex(blog => blog.id == blogId);
+        // blogData[blogIndexDataById] = {  ...blogData[blogIndexDataById], ...newBlogData };
+        // fs.writeFileSync('mocks/blog.mock.json', JSON.stringify(blogData));
+        const data = await Blog.updateOne({ _id: blogId }, {$set: newBlogData})
+        res.status(200).send(data);
     } catch(e) {
         res.status(500).send(e.message);
     }
