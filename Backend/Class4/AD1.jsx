@@ -26,16 +26,16 @@ const Movie = mongoose.model(
 );
 
 // Your code goes here.
-app.delete("/movies/:id", async (req, res) => {
+app.put("/movies/:id", async (req, res) => {
     try {
-        const movie = await Movie.findByIdAndDelete(req.params.id);
-        if (!movie) return res.status(404).send("Movie not found");
-        res.status(200).json({
-            message: "successful element deleted",
-          });
-      } catch (err) {
-        res.status(500).send(err);
-      }
-});
+      const movie = await Movie.findByIdAndUpdate(req.params.id, req.body, {
+        new: true,
+      });
+      if (!movie) return res.status(404).send("Movie not found");
+      res.json(movie);
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  });
 
 module.exports = app;
