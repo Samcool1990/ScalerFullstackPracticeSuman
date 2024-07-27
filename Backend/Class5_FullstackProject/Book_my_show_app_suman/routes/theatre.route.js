@@ -24,7 +24,6 @@ router.get("/", getAllTheatre);
 router.put("/:theatreId", updateTheatre);
 
 // delete theatre
-
 router.delete("/theatreId", deleteTheatre);
 
 export default router;
