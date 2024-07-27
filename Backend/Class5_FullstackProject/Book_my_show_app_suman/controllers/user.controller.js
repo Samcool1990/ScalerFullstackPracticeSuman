@@ -1,20 +1,26 @@
 import User from "../model/user.model.js";
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
+export const getUserDetail = async (req, res) => {
+  const jwtToken = req.headers["jwttoken"];
+  const userData = jwt.verify(jwtToken, process.env.jwt_secret_salt);
+  if (userData) {
+    console.log("Email", userData);
+    const userInfo = await User.findOne({ email: userData.email });
+    return res.status(401).send({
+      status: true,
+      ...userInfo,
+    });
+  } else {
+    return res.status(401).send({
+      status: false,
+      message: "Please login in again!",
+    });
+  }
 
-export const getUserDetails = async (req, res) => {
-  const jwtToken = req.header['jwttoken'];
-  console.log(jwtToken)
-
-  const UserDetail = await User.findById(userId);
-  res.status(200).send(UserDetail);
-};
-
-export const getUserById = async (req, res) => {
-  const userId = req.params.userId;
-  const UserDetail = await User.findById(userId);
-  res.status(200).send(UserDetail);
+  // const UserDetail = await User.findOne({ email: });
+  res.status(200).send(userData);
 };
 
 export const createUser = async (req, res) => {
@@ -45,27 +51,54 @@ export const deleteUser = async (req, res) => {
   res.status(200).send(deletedData);
 };
 
+export const login = async (req, res) => {
+  const userDetail = req.body;
+  const user = await User.findOne({ email: userDetail.email }).select(
+    "password email"
+  );
 
-export const login = async (req,res) => {
-  const UserDetail = req.body;
-  const user = await User.findOne({email: UserDetail.email}.select(password));
+  console.log(process.env.jwt_secret_salt);
 
-  console.log(UserDetail, user)
-  if(user){
-    const validPassword = await bcrypt.compare(UserDetail.password, user.password);
-
-    if(!validPassword) {
-      return res.status(401).send({
-        status: false,
-        message: "Email Or Password in incorrect"
-      });
-    }
-    return res.status(200).send("User loged in ")
-  }else {
-    return res.status(401).send({
+  if (!userDetail.email || !userDetail.password) {
+    return res.status(400).send({
       status: false,
-      message: "Email Or Password in incorrect"
+      message: "Please pass email and password",
     });
   }
-}
 
+  if (user) {
+    const validPassword = await bcrypt.compare(
+      userDetail.password,
+      user.password
+    );
+
+    if (validPassword) {
+      const jwtToken = jwt.sign(
+        {
+          email: user.email,
+          id: user._id,
+          isOwner: user.isOwner,
+        },
+        process.env.jwt_secret_salt,
+        { expiresIn: "1d" }
+      );
+
+      res.setHeader("jwtToken", jwtToken);
+
+      return res.status(200).send({
+        status: true,
+        message: "You are loggedIn",
+      });
+    } else {
+      return res.status(401).send({
+        status: false,
+        message: "Email or password is incorrect",
+      });
+    }
+  } else {
+    return res.status(401).send({
+      status: false,
+      message: "Email or password is incorrect",
+    });
+  }
+};
