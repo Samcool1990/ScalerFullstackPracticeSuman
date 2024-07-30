@@ -8,7 +8,7 @@ const movieSchema = new Schema(
       trim: true,
       minLength: [10, "Min 10 characters are required"],
     },
-    deescription: {
+    description: {
       type: String,
       required: true,
     },
@@ -38,6 +38,6 @@ const movieSchema = new Schema(
   { timestamps: true }
 );
 
-const Movie = model("movie", movieSchema);
+const Movie = model("movies", movieSchema);
 
 export default Movie;
