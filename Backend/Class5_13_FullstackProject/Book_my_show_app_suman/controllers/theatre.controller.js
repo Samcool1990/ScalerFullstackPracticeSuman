@@ -44,10 +44,15 @@ export const getTheatreById = async (req, res) => {
 // get all theatres
 export const getAllTheatre = async (req, res) => {
   try {
-    const theatres = await Theatre.find({});
+    const ownerId = req.query.ownerId;
+    const filter = {};
+    if (ownerId) {
+      filter.owner = ownerId;
+    }
+    const theatreDetails = await Theatre.find({ filter });
     res.send({
       success: true,
-      ...theatres,
+      ...theatreDetails,
     });
   } catch (e) {
     res.status(500).send({
@@ -78,10 +83,14 @@ export const getAllTheatre = async (req, res) => {
 
 export const updateTheatre = async (req, res) => {
   try {
-    const updatedTheatre = await Theatre.findByIdAndUpdate(
-      req.params.theatreId,
-      req.body,
-      { new: true, runValidators: true }
+    // const updatedTheatre = await Theatre.findByIdAndUpdate(
+    //   req.params.theatreId,
+    //   req.body,
+    //   { new: true, runValidators: true }
+    // );
+    const updatedTheatre = await Theatre.updateOne(
+      { _id: req.params.theatreId },
+      { $set: req.body }
     );
     if (!updatedTheatre) {
       return res.status(404).send({
@@ -125,3 +134,6 @@ export const deleteTheatre = async (req, res) => {
     });
   }
 };
+
+//Deactivate Theatre
+//Activate Theatre
