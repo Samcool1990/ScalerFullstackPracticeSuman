@@ -7,7 +7,7 @@ import {
   getShowById,
   updateShow,
 } from "../controllers/show.controller.js";
-import isTheatreOwnerMiddleware from "../middleware/isTheatreOwner.middleware.js";
+import isTheatreOwnerMiddleware from "../middleware/is_Theatre_Owner.middleware.js";
 
 const router = express.Router();
 

@@ -7,7 +7,7 @@ const showSchema = new Schema(
       required: true,
     },
     date: {
-      type: Date,
+      type: String,  // Shold be Date. Just for testing using string
       required: true,
     },
     time: {

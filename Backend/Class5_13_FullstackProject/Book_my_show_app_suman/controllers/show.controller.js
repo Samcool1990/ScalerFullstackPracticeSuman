@@ -22,7 +22,7 @@ export const updateShow = async (req, res) => {
       { _id: req.params.showId },
       { $set: req.body }
     );
-
+    console.log('updatedShowDetails', updatedShowDetails)
     res.send(updatedShowDetails);
   } catch (e) {
     res.status(500).send({

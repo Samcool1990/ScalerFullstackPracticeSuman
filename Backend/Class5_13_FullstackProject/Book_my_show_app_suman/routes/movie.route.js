@@ -7,7 +7,7 @@ import {
   getMovieById,
   updateMovie,
 } from "../controllers/movie.controller.js";
-import isAdminMiddleware from "../middleware/isAdmin.middleware.js";
+import isAdminMiddleware from "../middleware/is_admin.middleware.js";
 
 const router = express.Router();
 

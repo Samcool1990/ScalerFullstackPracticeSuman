@@ -4,8 +4,9 @@ import Movie from "../model/movie.model.js";
 export const addMovie = async (req, res) => {
   try {
     const newMovie = new Movie(req.body);
+    console.log('newMovie', newMovie)
     newMovie.owner = req.user.id;
-    const movieDetails = await newmovie.save();
+    const movieDetails = await newMovie.save();
     res.send({
       success: true,
       ...movieDetails,
@@ -44,16 +45,9 @@ export const getMovieById = async (req, res) => {
 // get all movies
 export const getAllMovie = async (req, res) => {
   try {
-    const ownerId = req.query.ownerId;
     const filter = {};
-    if (ownerId) {
-      filter.owner = ownerId;
-    }
-    const movieDetails = await Movie.find({ filter });
-    res.send({
-      success: true,
-      ...movieDetails,
-    });
+    const moviesDetails = await Movie.find(filter);
+    res.send(moviesDetails);
   } catch (e) {
     res.status(500).send({
       success: false,

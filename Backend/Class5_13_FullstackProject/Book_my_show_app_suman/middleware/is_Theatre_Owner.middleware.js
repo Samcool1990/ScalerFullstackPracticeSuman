@@ -1,4 +1,4 @@
-import Theatre from "../model/threatre.model.js";
+import Theatre from "../model/theatre.model.js";
 
 const isTheatreOwnerMiddleware = async function (req, res, next) {
   try {

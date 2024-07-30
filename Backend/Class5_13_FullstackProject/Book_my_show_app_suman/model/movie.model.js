@@ -6,7 +6,7 @@ const movieSchema = new Schema(
       type: String,
       required: [true, "Title is required"],
       trim: true,
-      minLength: [10, "Min 10 characters are required"],
+      minLength: [5, "Min 5 characters are required"],
     },
     description: {
       type: String,
@@ -18,7 +18,7 @@ const movieSchema = new Schema(
     },
     genre: {
       type: [String],
-      enum: ["Thriller", "Action", "Fantasy"],
+      enum: ["Thriller", "Action", "Fantasy", "Comedy", "Adventure", "Horror"],
       required: true,
     },
     language: {
@@ -26,8 +26,8 @@ const movieSchema = new Schema(
       enum: ["English", "Hindi"],
       required: true,
     },
-    releaseData: {
-      type: Date,
+    releaseDate: {
+      type: String, // Should be Date
       required: true,
     },
     poster: {
