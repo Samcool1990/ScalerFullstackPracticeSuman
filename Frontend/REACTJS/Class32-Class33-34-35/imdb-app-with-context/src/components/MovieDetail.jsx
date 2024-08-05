@@ -15,7 +15,7 @@ const MovieDetail = () => {
     return (
         <div className="movie-detail">
             <h1>{movieDetail.title}</h1>
-            <img src={`https://image.tmdb.org/t/p/original${movieDetail.backdrop_path}`}/>
+            <img alt="" src={`https://image.tmdb.org/t/p/original${movieDetail.backdrop_path}`}/>
             <p>{movieDetail.overview}</p>
         </div>
     )

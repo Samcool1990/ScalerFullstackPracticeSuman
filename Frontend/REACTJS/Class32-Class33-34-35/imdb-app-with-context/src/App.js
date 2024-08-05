@@ -32,20 +32,10 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route
-            path="/"
-            element={
-              <MovieList />
-            }
-          />
-          <Route path="/movie-list" element={<Navigate to={"/"} />} />
-          <Route path="/movie-detail/:movieId" element={<MovieDetail />} />
-          <Route
-            path="/favourite"
-            element={
-              <Favourite />
-            }
-          />
+          <Route path="/" element={<MovieList />} />
+          <Route path="/movie-list" element={<Navigate to={"/"} />}/>
+          <Route path="/movie-detail/:movieId" element={<MovieDetail />}/>
+          <Route path="/favourite" element={ <Favourite /> } />
           <Route path="*" element={<h1>Page not found!</h1>} />
         </Routes>
       </BrowserRouter>
