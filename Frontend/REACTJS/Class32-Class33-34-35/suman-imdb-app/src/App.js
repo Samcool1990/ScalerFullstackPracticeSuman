@@ -64,27 +64,12 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route
-            path="/"
-            element={
-              <MovieList
-                favourites={favourites}
-                onAdd={handleAddFavourite}
-                onDelete={handleDeleteFavourite}
-              />
-            }
-          />
+          <Route path="/" element={ <MovieList favourites={favourites} onAdd={handleAddFavourite}
+                onDelete={handleDeleteFavourite} /> } />
           <Route path="/movie-list" element={<Navigate to={"/"} />} />
           <Route path="/movie-detail/:movieId" element={<MovieDetail />} />
-          <Route
-            path="/favourite"
-            element={
-              <Favourite
-                favourites={favourites}
-                onDelete={handleDeleteFavourite}
-              />
-            }
-          />
+          <Route path="/favourite" element={ <Favourite favourites={favourites}
+                onDelete={handleDeleteFavourite} /> } />
           <Route path="*" element={<h1>Page not found!</h1>} />
         </Routes>
       </BrowserRouter>

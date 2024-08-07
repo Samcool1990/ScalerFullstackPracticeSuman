@@ -123,10 +123,7 @@ const Favourite = ({ favourites, onDelete }) => {
                 {filteredFavourites.map((movie) => (
                   <tr>
                     <td>
-                      <img
-                        width="50px"
-                        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                      />
+                      <img width="50px" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
                     </td>
                     <td>{movie.original_title}</td>
                     <td>{genreids[movie.genre_ids[0]]}</td>

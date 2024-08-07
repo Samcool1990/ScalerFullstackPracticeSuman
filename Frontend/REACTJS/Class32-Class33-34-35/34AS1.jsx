@@ -10,12 +10,7 @@ const App = () => {
 
   return (
     <div>
-      <input
-        data-testid="input-id"
-        type="text"
-        value={value}
-        onChange={handleChange}
-      />
+      <input data-testid="input-id" type="text" value={value} onChange={handleChange} />
     </div>
   );
 };
