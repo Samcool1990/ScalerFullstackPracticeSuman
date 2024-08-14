@@ -7,6 +7,7 @@ const ShowPage = () => {
   const { showId } = useParams();
   const [show, setShow] = useState({});
   const [selectedSeats, setSelectedSeats] = useState(1);
+  const [clientSecret, setClientSecret] = useState('');
 
   const handleSeatChange = (e) => {
     setSelectedSeats(Number(e.target.value));
