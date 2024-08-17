@@ -6,7 +6,6 @@ import { Elements } from "@stripe/react-stripe-js";
 
 import CheckoutForm from "./CheckoutForm";
 
-
 const ShowPage = () => {
   const { showId } = useParams();
   const [show, setShow] = useState({});
@@ -53,7 +52,6 @@ const ShowPage = () => {
         });
       });
   }, []);
-
 
   useEffect(() => {
     // Call confirm booking API
