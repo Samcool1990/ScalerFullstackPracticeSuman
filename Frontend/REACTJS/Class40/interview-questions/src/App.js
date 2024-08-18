@@ -1,36 +1,22 @@
-// src/App.js
-
-import React from 'react';
+import logo from './logo.svg';
+import './App.css';
 import Accordion from './components/Accordion';
 import StopWatch from './components/StopWatch';
 import Carousel from './components/Carousel';
-import Modal from './components/Modal';
+import MyModal from './components/Modal';
 
-const items = [
-  {
-    title: 'What is React?',
-    content: 'React is a front-end JavaScript library developed by Facebook in 2011.'
-  },
-  {
-    title: 'Why use React?',
-    content: 'React is a favorite JavaScript library among engineers.'
-  },
-  {
-    title: 'How do you use React?',
-    content: 'You use React by creating components.'
-  }
-];
-
-const App = () => {
+function App() {
   return (
-    <div className="ui container">
-      <h1>Frequently Asked Questions</h1>
-      <Accordion items={items} />
+    <div className="App">
+      <MyModal />
+      <hr/>
+      <Carousel />
+      <hr/>
       <StopWatch />
-      <Carousel/>
-      {/* <Modal/> */}
+      <hr/>
+      <Accordion />
     </div>
   );
-};
+}
 
 export default App;
