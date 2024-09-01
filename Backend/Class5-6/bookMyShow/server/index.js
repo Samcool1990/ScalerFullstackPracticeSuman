@@ -8,6 +8,11 @@ import connectToDB from './database/mongoDb.js';
 import cors from 'cors';
 import nodemailer  from 'nodemailer';
 import 'dotenv/config';
+import {Server} from 'socket.io';
+import http from 'http';
+
+
+
 
 export const transporter = nodemailer.createTransport({
     host: "smtp.mandrillapp.com",
@@ -19,6 +24,16 @@ export const transporter = nodemailer.createTransport({
 })
 
 const app = express();
+
+const server  = http.createServer(app);
+const io = new Server(server);
+
+io.on('connection', (socket) => {
+    console.log(socket.id);
+    socket.on('message' , (msg) => {
+        console.log(msg);
+    })
+})
 
 app.set('view engine', 'ejs');
 
