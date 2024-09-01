@@ -13,10 +13,11 @@ import Navbar from './components/Navbar';
 import { loadStripe } from '@stripe/stripe-js';
 import Bookings from './pages/Bookings';
 import Chat from './pages/Chat';
+import io from 'socket.io-client';
 export const stripePromise = loadStripe("pk_test_51LWoczSHyBJaG3xBvWVcXs0AesbSw429djf2w0ZiiKQINDObgVjhGPVRpygwS6UWI3oWwebwb65GUdU5y5ui9PnM009QPQF0nU");
 
 
-const socket = io()
+export const socket = io('http://localhost:5001');
 
 function App() {
   return (
